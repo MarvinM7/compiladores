@@ -19,6 +19,7 @@ package postfix.lexer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.HashMap;
 
 /**
  * @author Henrique Rebelo
@@ -29,7 +30,7 @@ public class Scanner {
 	private final List<Token> tokens = new ArrayList<>();
 	private final HashMap<String, String> hashmap;
 
-	public Scanner(String source, HashMap<String, String> ) {
+	public Scanner(String source, HashMap<String, String> hashmap) {
 		this.source = source;
 		this.hashmap = hashmap;
 	}
@@ -76,8 +77,8 @@ public class Scanner {
 		else if(Regex.isOP(token)) {
 			ret = new Token(Regex.getOPTokenType(token), token);
 		}
-		else if(token.length() > 0 && hashmap.get(token)) {
-			ret = new Token(TokenType.ID, hashmap.get(token));
+		else if(token.length() > 0 && hashmap.containsKey(token)) {
+			ret = new Token(TokenType.NUM, hashmap.get(token));
 		}
 		else {
 			throw new LexError(token + " cannot be resolved");
