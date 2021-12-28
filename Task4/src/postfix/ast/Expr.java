@@ -27,6 +27,7 @@ public abstract class Expr {
 	public interface Visitor<T> {
 		T visitNumberExpr(Number expr);
 		T visitBinopExpr(Binop expr);
+		T visitIDExpr(ID expr);
 	}
 
 	// Nested Expr classes here

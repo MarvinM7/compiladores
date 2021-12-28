@@ -4,6 +4,7 @@ import java.util.Stack;
 
 import postfix.ast.Expr.Binop;
 import postfix.ast.Expr.Number;
+import postfix.ast.Expr.ID;
 
 public class AstPrinter implements Expr.Visitor<String>{
 

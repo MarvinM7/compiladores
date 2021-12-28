@@ -74,8 +74,8 @@ public class Scanner {
 		else if(Regex.isOP(token)) {
 			ret = new Token(Regex.getOPTokenType(token), token);
 		}
-		else if(token.length() > 0 && hashmap.containsKey(token)) {
-			ret = new Token(TokenType.NUM, hashmap.get(token));
+		else if(Regex.isID(token)) {
+			ret = new Token(TokenType.ID, token);
 		}
 		else {
 			throw new LexError(token + " cannot be resolved");

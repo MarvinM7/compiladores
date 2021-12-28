@@ -17,6 +17,7 @@
 package postfix.interpreter;
 
 import postfix.ast.Expr;
+import postfix.lexer.LexError;
 import java.util.HashMap;
 /**
  * @author Henrique Rebelo
@@ -65,8 +66,12 @@ public class Interpreter implements Expr.Visitor<Integer> {
 	}
 
 	@Override
-	public Integer visitIDExpr(Expr.ID expr) {
-		return Integer.parseInt(expr.id);
+	public Integer visitIDExpr(Expr.ID expr) throws LexError {
+		try {
+			return Integer.parseInt(env.get(String.valueOf(expr.id))); 
+		} catch(Exception e) {
+			throw new LexError(String.valueOf(expr.id)+" cannot be resolved!\n");
+		}
 	}
 
 	private int evaluate(Expr expr) {
