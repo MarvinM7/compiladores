@@ -63,5 +63,18 @@ public abstract class Expr {
 		public final Token operator;
 	}
 
+	public static class ID extends Expr {
+		public ID(String id){
+			this.id = id;
+		}
+
+		@Override
+		public <T> T accept(Visitor<T> visitor) {
+			return visitor.visitIDExpr(this);
+		}
+
+		public final String id;
+	}
+
 	public abstract <T> T accept(Visitor<T> visitor);
 }

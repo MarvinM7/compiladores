@@ -64,6 +64,11 @@ public class Interpreter implements Expr.Visitor<Integer> {
 		return result;
 	}
 
+	@Override
+	public Integer visitIDExpr(Expr.ID expr) {
+		return Integer.parseInt(expr.id);
+	}
+
 	private int evaluate(Expr expr) {
 		return expr.accept(this);
 	}

@@ -52,6 +52,10 @@ public class Regex {
 	public static boolean isStar(String token) {
 		return token.matches(STAR_REGEX);
 	}
+
+	public static boolean isID(String token) {
+		return token != "";
+	}
 	
 	/**
 	 * returns the proper token type for an operation token
@@ -73,7 +77,10 @@ public class Regex {
 		else if(isStar(token)) {
 			tokenType = TokenType.STAR;
 		}
-		
+		else if(isID(token)) {
+			tokenType = TokenType.ID;
+		}
+
 		return tokenType;
 	}
 }

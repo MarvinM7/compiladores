@@ -19,7 +19,6 @@ package postfix.lexer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.HashMap;
 
 /**
  * @author Henrique Rebelo
@@ -28,11 +27,9 @@ public class Scanner {
 
 	private final String source;
 	private final List<Token> tokens = new ArrayList<>();
-	private final HashMap<String, String> hashmap;
 
-	public Scanner(String source, HashMap<String, String> hashmap) {
+	public Scanner(String source) {
 		this.source = source;
-		this.hashmap = hashmap;
 	}
 
 	/**
